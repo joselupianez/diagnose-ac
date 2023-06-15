@@ -4,7 +4,7 @@
         A user-friendly web application that helps users diagnose issues they are experiencing with their air conditioning unit. Simply provide a description of the problem, and some information on your A/C to receive possible diagnostic and recommendations in seconds.
         <br />
         <br />
-        <a href="https://diagnoseac.cyclic.app">View</a>
+        <a href="https://diagnose-ac.onrender.com">View</a>
         ·
         <a href="https://github.com/joselupianez/diagnoseac/issues">Report Bug</a>
         ·
