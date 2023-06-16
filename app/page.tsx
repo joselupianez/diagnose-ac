@@ -43,54 +43,54 @@ export default function Home() {
   }
 
   return (
-    <div className="flex max-w-5xl mx-auto flex-col items-center justify-center p-10 min-h-screen">
+    <div className="flex max-w-5xl mx-auto flex-col items-center justify-center p-10 min-h-screen text-slate-700 mb-5">
       <main className="flex flex-1 w-full flex-col">
-        <h1 className="sm:text-6xl text-4xl font-bold text-slate-900 mb-5">Diagnose your AC</h1>
-        {errorMessage && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl mt-8">{errorMessage}</div>
-        )}
-        <p className="my-5 font-medium text-left">1. Enter the issues you are experiencing with your air conditioning unit:</p>
-        <textarea
-          value={issue}
-          className="w-full rounded-md border-gray-300 shadow-sm placeholder:p-20 focus:ring-1 focus:ring-gray-400 focus:border-gray-400" 
-          rows={4} 
-          placeholder='e.g. My AC is not cooling properly.'
-          onChange={(e) => setIssue(e.target.value)}
-        />
-        <p className="my-5 font-medium text-left">2. Select the type of air conditioning system you have:</p>
-        <Dropdown 
-          currentDropdownItem={acType}
-          setDropDownItem={(newACType) => setACType(newACType as typeof acType)}
-          dropdownItems={airConditioningTypes}
-        />
-        <p className="my-5 font-medium text-left">3. Select the age of your air conditioning system:</p>
-        <Dropdown 
-          currentDropdownItem={acAge}
-          setDropDownItem={(newACAge) => setACAge(newACAge as typeof acAge)}
-          dropdownItems={airConditioningAges}
-        />
-        <p className="my-5 font-medium text-left">4. Select the frequency of maintenance:</p>
-        <Dropdown 
-          currentDropdownItem={maintenanceFrequency}
-          setDropDownItem={(newMaintenanceFrequency) => setMaintenanceFrequency(newMaintenanceFrequency as typeof maintenanceFrequency)}
-          dropdownItems={maintenanceFrequencies}
-        />
-        {!loading ? (
-          <button className="w-full rounded-xl p-2 my-5 text-white bg-black hover:bg-gray-900" onClick={(e) => generateNewDiagnostic(e)}>Diagnose</button>
-        ) : (
-          <button className="w-full rounded-xl p-2 my-5 text-white bg-gray-900" disabled>
-            Loading...
-          </button>
-        )}
-
+        <div className="bg-white rounded-xl p-10">
+          <h1 className="sm:text-6xl text-4xl font-bold mb-5">Diagnose your AC</h1>
+          {errorMessage && (
+            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl mt-8">{errorMessage}</div>
+          )}
+          <p className="my-5 font-medium text-left">1. Enter the issues you are experiencing with your air conditioning unit:</p>
+          <textarea
+            value={issue}
+            className="w-full rounded-md border-gray-200 bg-slate-100 text-gray-700 shadow-sm placeholder:p-20 focus:ring-1 focus:ring-gray-400 focus:border-gray-400" 
+            rows={4} 
+            placeholder='e.g. My AC is not cooling properly.'
+            onChange={(e) => setIssue(e.target.value)}
+          />
+          <p className="my-5 font-medium text-left">2. Select the type of air conditioning system you have:</p>
+          <Dropdown 
+            currentDropdownItem={acType}
+            setDropDownItem={(newACType) => setACType(newACType as typeof acType)}
+            dropdownItems={airConditioningTypes}
+          />
+          <p className="my-5 font-medium text-left">3. Select the age of your air conditioning system:</p>
+          <Dropdown 
+            currentDropdownItem={acAge}
+            setDropDownItem={(newACAge) => setACAge(newACAge as typeof acAge)}
+            dropdownItems={airConditioningAges}
+          />
+          <p className="my-5 font-medium text-left">4. Select the frequency of maintenance:</p>
+          <Dropdown 
+            currentDropdownItem={maintenanceFrequency}
+            setDropDownItem={(newMaintenanceFrequency) => setMaintenanceFrequency(newMaintenanceFrequency as typeof maintenanceFrequency)}
+            dropdownItems={maintenanceFrequencies}
+          />
+          {!loading ? (
+            <button className="w-full rounded-xl py-3 px-2 mt-5 font-bold text-lg text-white bg-blue-600 hover:bg-blue-700" onClick={(e) => generateNewDiagnostic(e)}>Diagnose</button>
+          ) : (
+            <button className="w-full rounded-xl py-3 px-2 mt-5 font-bold text-lg text-white bg-blue-700" disabled>
+              Diagnosing...
+            </button>
+          )}
+        </div>
         {generatedDiagnostic && (
-          <div className="my-10">
-            <h2 className="sm:text-4xl text-3xl max-w-2xl font-bold text-slate-900 mb-10">Diagnostic:</h2>
-            <div className="rounded-xl border border-gray-100 shadow-sm p-5">
-              <p>{generatedDiagnostic}</p>
-            </div>
+          <div className="bg-white rounded-xl mt-10 p-10">
+            <h2 className="sm:text-4xl text-3xl max-w-2xl font-bold mb-10">Diagnostic:</h2>
+            <p className="font-medium text-left">{generatedDiagnostic}</p>
           </div>
         )}
+
 
       </main>
       <Footer />
